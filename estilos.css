@@ -1,0 +1,204 @@
+/* =============================
+   TIPOGRAFÍA DEL TEXTO
+   ============================= */
+.texto-avanzado {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+  font-variant: small-caps;
+  font: italic small-caps bold 16px/1.5 Arial, sans-serif;
+}
+
+/* =============================
+   FORMATO DEL TEXTO
+   ============================= */
+.formato-texto {
+  text-align: justify;
+  line-height: 1.6;
+  text-decoration: underline;
+  text-transform: uppercase;
+  vertical-align: baseline;
+  text-indent: 20px;
+  letter-spacing: 1px;
+  word-spacing: 4px;
+  white-space: normal;
+}
+
+/* =============================
+   LETRA CAPITAL CON :first-letter
+   ============================= */
+#historia p::first-letter {
+  font-size: 2em;
+  font-weight: bold;
+  color: #d9534f;
+}
+
+/* =============================
+   ENLACES Y ESTADOS (:link, :visited, etc.)
+   ============================= */
+a:link {
+  color: blue;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+a:visited {
+  color: purple;
+}
+
+a:hover {
+  color: orange;
+  text-decoration: underline;
+}
+
+a:active {
+  color: red;
+}
+
+/* =============================
+   ENLACE COMO BOTÓN
+   ============================= */
+.boton-enlace {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.boton-enlace:hover {
+  background-color: #0056b3;
+}
+
+/* =============================
+   ENLACES CON ICONO
+   ============================= */
+a {
+  background-image: url('https://cdn-icons-png.flaticon.com/16/25/25284.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 20px;
+}
+
+/* =============================
+   LISTAS CON VIÑETA PERSONALIZADA
+   ============================= */
+.lista-deportes {
+  list-style-type: square;
+}
+
+.lista-con-imagen {
+  list-style-image: url('https://cdn-icons-png.flaticon.com/16/854/854894.png');
+  list-style-position: inside;
+}
+
+/* =============================
+   TABLAS ESTILIZADAS
+   ============================= */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+caption {
+  caption-side: top;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* =============================
+   FORMULARIO ESTILIZADO
+   ============================= */
+form div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* =============================
+   FORMULARIO: CAMPO ACTIVO (focus)
+   ============================= */
+input:focus, textarea:focus {
+  border: 2px solid #007bff;
+  background-color: #e9f5ff;
+}
+/* ===============================
+   REVISTAS Y ACCESORIOS (focus)
+   ===============================*/
+   body {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.6;
+  background: #f5f5f5;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: #0a0a23;
+  color: white;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.deporte {
+  padding: 20px 40px;
+  background-color: white;
+  margin: 20px auto;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.deporte h2 {
+  color: #0a0a23;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #0a0a23;
+  color: white;
+  font-size: 14px;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #ccc;
+  margin: 30px auto;
+  width: 80%;
+}
