@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadios de Fútbol</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .stadium {
+            margin: 20px 0;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        img {
+            width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Estadios de Fútbol</h1>
+    
+    <img src="estadios.jpg" alt="Mapa de Estadios" usemap="#estadiosmap">
+    <map name="estadiosmap">
+        <area shape="rect" coords="34,44,270,350" href="https://www.google.com/maps/place/Estadio+Akron/@20.6817764,-103.4626455,17z" alt="Estadio Akron">
+        <area shape="rect" coords="290,172,333,250" href="https://www.google.com/maps/place/Estadio+Santiago+Bernab%C3%A9u/@40.4530428,-3.690914,17z" alt="Estadio Bernabéu">
+    </map>
+    
+    <table summary="Información de los estadios">
+        <tr>
+            <th>Nombre</th>
+            <th>Ubicación</th>
+            <th>Capacidad</th>
+        </tr>
+        <tr>
+            <td>Estadio Akron</td>
+            <td>Guadalajara, México</td>
+            <td>46,355</td>
+        </tr>
+        <tr>
+            <td>Estadio Santiago Bernabéu</td>
+            <td>Madrid, España</td>
+            <td>81,044</td>
+        </tr>
+    </table>
+    
+    <h2>Contacto</h2>
+    <form action="submit.php" method="post" enctype="multipart/form-data">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" size="30" maxlength="50" required><br><br>
+        
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="message">Mensaje:</label><br>
+        <textarea id="message" name="message" rows="4" cols="40"></textarea><br><br>
+        
+        <input type="checkbox" id="subscribe" name="subscribe" checked>
+        <label for="subscribe">Suscribirme a novedades</label><br><br>
+        
+        <input type="submit" value="Enviar">
+    </form>
+    
+    <h2>Multimedia</h2>
+    <object data="video.mp4" type="video/mp4" width="320" height="240"></object>
+    <embed src="audio.mp3" width="300" height="50">
+</body>
+</html>
