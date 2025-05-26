@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CACHAS SPORT</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
     <!-- Enlace a archivo CSS externo -->
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilos.css" />
 
     <style>
         /* Estilos internos en CSS3 - Comentarios válidos */
@@ -28,7 +27,6 @@
             color: #ff6600;
         }
 
-        /* Estilo para el GIF */
         #gif-fijo {
             position: fixed;
             right: 10px;
@@ -49,7 +47,6 @@
             box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
         }
 
-        /* Comentario CSS válido */
         .grandestitle {
             font-size: 36px;
             font-weight: bold;
@@ -86,102 +83,174 @@
 
     <div class="container mt-5">
         <section id="acerca">
-           <h1 class="texto-shorthand">Acerca de la Institución</h1>
-    <p class="texto-tipo"><strong>CACHAS SPORT</strong> es una institución dedicada al análisis y promoción del deporte. Nuestra <em>misión</em> es ofrecer contenido de calidad a nuestros seguidores.</p>
-	
+            <h1 class="texto-shorthand">Acerca de la Institución</h1>
+            <h1 onclick="console.log('Hiciste clic en el título')">CACHAS SPORT</h1>
+            <p class="texto-tipo"><strong>CACHAS SPORT</strong> es una institución dedicada al análisis y promoción del deporte. Nuestra <em>misión</em> es ofrecer contenido de calidad a nuestros seguidores.</p>
+            
+            <!-- Uso de <ins> y <del> -->
+            
+            
             <blockquote>"El deporte es el reflejo de la sociedad y su evolución." - <cite>Axel García 2007-2025</cite></blockquote>
-			<dfn>Deporte</dfn>: Actividad física para mejorar habilidades o mantener la salud.
-			<pre><code>Hola Bienvenidos a esta pagina web donde hablaremos acerca de los deportes mas emocionantes y mas entretenidos que hay en la historia de los Deportes"
-</code></pre>
+            <dfn>Deporte</dfn>: Actividad física para mejorar habilidades o mantener la salud.
 
+            <pre><code>Hola Bienvenidos a esta pagina web donde hablaremos acerca de los deportes mas emocionantes y mas entretenidos que hay en la historia de los Deportes"</code></pre>
 
+            <!-- Lista ordenada (ol) -->
+            <h2>Ranking de Deportes Populares</h2>
+            <ol>
+                <li>Fútbol</li>
+                <li>Baloncesto</li>
+                <li>Tenis</li>
+            </ol>
+
+            <!-- Lista de definición -->
+            <dl>
+                <dt>Deporte</dt>
+                <dd>Actividad física para la salud y entretenimiento.</dd>
+                <dt>Atleta</dt>
+                <dd>Persona que practica deporte con dedicación.</dd>
+            </dl>
+
+            <!-- Acronym (obsoleta, pero agregada) -->
+            <p>La sigla <acronym title="Organización de las Naciones Unidas">ONU</acronym> es ampliamente conocida.</p>
+
+            <!-- Aquí se inserta el párrafo con fecha actual -->
+            <script>
+                // Crear un nuevo párrafo
+                const p = document.createElement('p');
+                const fecha = new Date();
+                // Formatear fecha en español
+                const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+                p.textContent = `Fecha actual: ${fecha.toLocaleDateString('es-ES', opciones)}`;
+                // Insertar el párrafo al final de la sección 'acerca'
+                document.getElementById('acerca').appendChild(p);
+            </script>
 
         </section>
 
         <section id="productos">
-    <h1>Productos</h1>
-    <ul>
-   		<li><a href="revistas.html">Revistas Deportivas</a></li>
-		<li><a href="accesorios.html">Accesorios y ropa deportiva</a><li>
-    </ul>
-</section>
+            <h1>Productos</h1>
+            <ul>
+                <li><a href="revistas.html">Revistas Deportivas</a></li>
+                <li><a href="accesorios.html">Accesorios y ropa deportiva</a></li>
+            </ul>
+        </section>
 
-<section id="servicios">
-    <h1>Servicios</h1>
-    <ul>
-        <li><a href="analisisdeportivo.html">Análisis deportivos</a></li>
-    </ul>
-</section>
-
+        <section id="servicios">
+            <h1>Servicios</h1>
+            <ul>
+                <li><a href="analisisdeportivo.html">Análisis deportivos</a></li>
+            </ul>
+        </section>
 
         <section id="novedades">
             <h1>Novedades</h1>
-            <p>Últimas noticias y actualizaciones de <abbr title="CACHAS SPORT">CS</abbr>. <br>&nbsp; ¡No te lo pierdas!</p>
+            <p>Últimas noticias y actualizaciones de <abbr title="CACHAS SPORT">CS</abbr>. <br />&nbsp; ¡No te lo pierdas!</p>
         </section>
 
         <section id="historia">
-<h1 style="text-shadow: 2px 2px 5px gray;">Historia del Fútbol</h1>
-
+            <h1 style="text-shadow: 2px 2px 5px gray;">Historia del Fútbol</h1>
             <p>El fútbol, también conocido como soccer en algunos países, es uno de los deportes más populares y practicados en el mundo. Se originó en Inglaterra en el siglo XIX y rápidamente se difundió a nivel mundial. En 1904, la FIFA fue fundada para organizar competiciones internacionales y unificar las reglas del deporte. Desde entonces, el fútbol ha crecido en importancia, convirtiéndose en una parte integral de la cultura global, con eventos como la Copa del Mundo atrayendo miles de millones de espectadores.</p>
+
+            <!-- Tabla con headers, scope, colspan, rowspan -->
+            <table border="1" summary="Tabla de eventos importantes en la historia del fútbol" style="width: 100%; margin-top: 20px;">
+                <caption>Eventos Históricos del Fútbol</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Año</th>
+                        <th scope="col">Evento</th>
+                        <th scope="col" colspan="2">Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td headers="ano">1863</td>
+                        <td headers="evento">Fundación de la FA</td>
+                        <td headers="desc1" colspan="2">Se establecen las reglas del fútbol moderno.</td>
+                    </tr>
+                    <tr>
+                        <td>1904</td>
+                        <td>Fundación FIFA</td>
+                        <td colspan="2">Organización internacional del fútbol.</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <section id="deportes">
             <h1>Deportes</h1>
             <ul>
                 <li><a href="#futbol">Fútbol</a></li>
-                <a href="basquetbol.html">🏀 Ver estrellas del Basquetbol</a>
-<a href="tenis.html">🎾 Ver estrellas del Tenis</a>
+                <li><a href="basquetbol.html">🏀 Ver estrellas del Basquetbol</a></li>
+                <li><a href="tenis.html">🎾 Ver estrellas del Tenis</a></li>
             </ul>
         </section>
 
-<section id="mapa-estadios">
-    <h1>Información de equipos de fútbol</h1>
+        <section id="mapa-estadios">
+            <h1>Información de equipos de fútbol</h1>
+            <p>Haz clic en la zona de interés:</p>
+            <!-- Mapa de imagen -->
+            <img src="mapa-estadios.jpg" alt="Mapa de estadios de fútbol" usemap="#mapaestadios" class="img-fluid" />
+            <map name="mapaestadios">
+                <area shape="rect" coords="0,0,100,100" href="bernabeu.html" alt="Estadio Santiago Bernabéu" />
+                <area shape="rect" coords="101,0,200,100" href="akron.html" alt="Estadio Akron" />
+                <area shape="rect" coords="201,0,300,100" href="azteca.html" alt="Estadio Azteca" />
+            </map>
+        </section>
 
-    <p>Haz clic en la zona de interés:</p>
+        <section id="formulario">
+            <h1>Formulario de contacto</h1>
+            <form action="procesar_formulario.php" method="post" enctype="multipart/form-data">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" size="30" maxlength="50" required /><br />
 
-    <div class="d-flex flex-wrap justify-content-around">
-        <a href="bernabeu.html">
-            <img src="bernabeu.jpg" alt="Estadio Santiago Bernabéu" class="cuadro-estadio" width="300">
-        </a>
-        <a href="akron.html">
-            <img src="chivasestadio.jpg" alt="Estadio Akron" class="cuadro-estadio" width="300">
-        </a>
-        <a href="azteca.html">
-            <img src="estadio azteca.jpg" alt="Estadio Azteca" class="cuadro-estadio" width="300">
-        </a>
-        <a href="bbva.html">
-            <img src="estadio bbva.jpg" alt="Estadio BBVA" class="cuadro-estadio" width="300">
-        </a>
-    </div>
-</section>
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" size="30" maxlength="50" required /><br />
 
+                <label for="archivo">Adjuntar archivo (PDF, JPG):</label>
+                <input type="file" id="archivo" name="archivo" accept=".pdf, .jpg, .jpeg" /><br />
 
-        <section id="contacto">
-            <h1>Contacto</h1>
-            <form>
-                <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Correo electrónico</label>
-                    <input type="email" class="form-control" id="email">
-                </div>
-                <div class="mb-3">
-                    <label for="mensaje" class="form-label">Mensaje</label>
-                    <textarea class="form-control" id="mensaje" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <fieldset>
+                    <legend>Género:</legend>
+                    <input type="radio" id="masculino" name="genero" value="masculino" checked />
+                    <label for="masculino">Masculino</label><br />
+                    <input type="radio" id="femenino" name="genero" value="femenino" />
+                    <label for="femenino">Femenino</label><br />
+                </fieldset>
+
+                <label for="deporte">Deporte favorito:</label>
+                <select id="deporte" name="deporte" required>
+                    <option value="" disabled selected>Selecciona uno</option>
+                    <option value="futbol">Fútbol</option>
+                    <option value="basquetbol">Basquetbol</option>
+                    <option value="tenis">Tenis</option>
+                </select><br />
+
+                <input type="checkbox" id="newsletter" name="newsletter" checked />
+                <label for="newsletter">Deseo recibir noticias por correo</label><br />
+
+                <button type="submit">Enviar</button>
             </form>
+        </section>
+
+        <section id="multimedia">
+            <h1>Multimedia</h1>
+            <object data="video-deportes.mp4" type="video/mp4" width="320" height="240">
+                <param name="autoplay" value="false" />
+                <param name="controls" value="true" />
+                <embed src="video-deportes.mp4" type="video/mp4" width="320" height="240" />
+            </object>
         </section>
     </div>
 
-    <footer class="bg-dark text-white text-center p-3 mt-5">
-        CACHAS SPORT © 2025 - Todos los derechos reservados <br>
-        <a href="mailto:axelgarcia300907@gmail.com" class="text-white">Contacto por email</a> |
+    <footer class="text-center mt-5 mb-3">
+        <p>&copy; 2025 CACHAS SPORT. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- GIF del monito con balón -->
-    <a href="https://www.gifsanimados.org/cat-futbol-165.htm"><img src="https://www.gifsanimados.org/data/media/165/futbol-americano-y-futbol-imagen-animada-0093.gif" border="0" alt="futbol-americano-y-futbol-imagen-animada-0093" id="gif-fijo" /></a>
+    <!-- Imágen GIF fija -->
+    <img id="gif-fijo" src="giphy.gif" alt="GIF divertido" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
