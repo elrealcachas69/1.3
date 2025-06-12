@@ -198,40 +198,91 @@
             </map>
         </section>
 
-        <section id="formulario">
-            <h1>Formulario de contacto</h1>
-            <form action="procesar_formulario.php" method="post" enctype="multipart/form-data">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" size="30" maxlength="50" required /><br />
+   <section id="formulario">
+        <h1>Formulario de contacto</h1>
+        <form id="form-usuario">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo:</label>
+                <input type="email" class="form-control" id="correo" required>
+            </div>
+            <div class="mb-3">
+                <label for="cumpleaños" class="form-label">Fecha de Cumpleaños:</label>
+                <input type="date" class="form-control" id="cumpleaños" required>
+            </div>
+            <div class="mb-3">
+                <label for="genero" class="form-label">Género:</label>
+                <select class="form-select" id="genero" required>
+                    <option value="">Seleccionar</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Registrar usuario</button>
+        </form>
+    </section>
 
-                <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="email" size="30" maxlength="50" required /><br />
+   <section id="lista-usuarios" class="mt-5">
+        <h2>Usuarios registrados</h2>
+        <table class="table table-striped" id="tabla-usuarios">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Cumpleaños</th>
+                    <th>Género</th>
+                    <th>Hora de Registro</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Usuarios se mostrarán aquí -->
+            </tbody>
+        </table>
+    </section>
+<!--Modal para editar usuario -->
+<div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="modalEditarUsuarioLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditarUsuarioLabel">Editar Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-editar-usuario">
+            <input type="hidden" id="id-usuario">
+            <div class="mb-3">
+              <label for="nombre-editar" class="form-label">Nombre:</label>
+              <input type="text" class="form-control" id="nombre-editar">
+            </div>
+            <div class="mb-3">
+              <label for="correo-editar" class="form-label">Correo:</label>
+              <input type="email" class="form-control" id="correo-editar">
+            </div>
+            <div class="mb-3">
+              <label for="cumpleaños-editar" class="form-label">Fecha de Cumpleaños:</label>
+              <input type="date" class="form-control" id="cumpleaños-editar">
+            </div>
+            <div class="mb-3">
+              <label for="genero-editar" class="form-label">Género:</label>
+              <select class="form-select" id="genero-editar">
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                <label for="archivo">Adjuntar archivo (PDF, JPG):</label>
-                <input type="file" id="archivo" name="archivo" accept=".pdf, .jpg, .jpeg" /><br />
-
-                <fieldset>
-                    <legend>Género:</legend>
-                    <input type="radio" id="masculino" name="genero" value="masculino" checked />
-                    <label for="masculino">Masculino</label><br />
-                    <input type="radio" id="femenino" name="genero" value="femenino" />
-                    <label for="femenino">Femenino</label><br />
-                </fieldset>
-
-                <label for="deporte">Deporte favorito:</label>
-                <select id="deporte" name="deporte" required>
-                    <option value="" disabled selected>Selecciona uno</option>
-                    <option value="futbol">Fútbol</option>
-                    <option value="basquetbol">Basquetbol</option>
-                    <option value="tenis">Tenis</option>
-                </select><br />
-
-                <input type="checkbox" id="newsletter" name="newsletter" checked />
-                <label for="newsletter">Deseo recibir noticias por correo</label><br />
-
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
 
         <section id="multimedia">
             <h1>Multimedia</h1>
@@ -250,7 +301,169 @@
     <!-- Imágen GIF fija -->
     <img id="gif-fijo" src="giphy.gif" alt="GIF divertido" />
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Crear o abrir la base de datos IndexedDB
+        let db;
+        const request = indexedDB.open("UsuariosDB", 1);
 
-</body>
+        request.onerror = (event) => {
+            console.error("Error al abrir IndexedDB:", event.target.errorCode);
+        };
+
+        request.onsuccess = (event) => {
+            db = event.target.result;
+            mostrarUsuarios(); // Mostrar usuarios al abrir la base de datos
+            console.log("Base de datos abierta con éxito");
+        };
+
+        request.onupgradeneeded = (event) => {
+            db = event.target.result;
+            if (!db.objectStoreNames.contains("usuarios")) {
+                const store = db.createObjectStore("usuarios", { keyPath: "id", autoIncrement: true });
+                store.createIndex("nombre", "nombre", { unique: false });
+                store.createIndex("correo", "correo", { unique: true });
+            }
+        };
+
+       // Función para registrar usuarios (modificada)
+        document.getElementById("form-usuario").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById("nombre").value;
+            const correo = document.getElementById("correo").value;
+            const cumpleaños = document.getElementById("cumpleaños").value;
+            const genero = document.getElementById("genero").value;
+            const horaRegistro = new Date().toLocaleTimeString(); // Obtener hora actual
+            //Validacion de la fecha de Cumpleaños
+			   const fechaMaxima = new Date();
+    fechaMaxima.setFullYear(fechaMaxima.getFullYear()); //Establece el año actual
+    const fechaCumpleaños = new Date(cumpleaños);
+	      if (fechaCumpleaños > fechaMaxima) {
+        alert("La fecha de cumpleaños no puede ser posterior al año actual.");
+        return; //Detenemos la ejecución si la fecha es inválida
+    }
+            const transaction = db.transaction(["usuarios"], "readwrite");
+            const store = transaction.objectStore("usuarios");
+            const nuevoUsuario = { nombre, correo, cumpleaños, genero, horaRegistro };
+            const addRequest = store.add(nuevoUsuario);
+
+            addRequest.onsuccess = () => {
+                alert("Usuario registrado correctamente en IndexedDB.");
+                document.getElementById("form-usuario").reset();
+                mostrarUsuarios();
+            };
+
+            addRequest.onerror = () => {
+                alert("Error al registrar usuario. ¿Ya existe este correo?");
+            };
+        });
+
+
+
+      // Función para mostrar usuarios en la tabla (modificada)
+        function mostrarUsuarios() {
+            const tbody = document.querySelector("#tabla-usuarios tbody");
+            tbody.innerHTML = "";
+
+            const transaction = db.transaction("usuarios", "readonly");
+            const store = transaction.objectStore("usuarios");
+
+            store.openCursor().onsuccess = function(event) {
+                const cursor = event.target.result;
+                if (cursor) {
+                    const usuario = cursor.value;
+                    const row = tbody.insertRow();
+                    const idCell = row.insertCell();
+                    const nombreCell = row.insertCell();
+                    const correoCell = row.insertCell();
+                    const cumpleañosCell = row.insertCell();
+                    const generoCell = row.insertCell();
+                    const horaRegistroCell = row.insertCell();
+                    const accionesCell = row.insertCell();
+
+                    idCell.textContent = usuario.id;
+                    nombreCell.textContent = usuario.nombre;
+                    correoCell.textContent = usuario.correo;
+                    cumpleañosCell.textContent = usuario.cumpleaños;
+                    generoCell.textContent = usuario.genero;
+                    horaRegistroCell.textContent = usuario.horaRegistro;
+                    accionesCell.innerHTML = `
+                        <button class="btn btn-warning btn-sm btn-editar" data-id="${usuario.id}">Editar</button>
+                        <button class="btn btn-danger btn-sm btn-eliminar" data-id="${usuario.id}">Eliminar</button>
+                    `;
+                    cursor.continue();
+                }
+            };
+        }
+
+document.querySelector("#tabla-usuarios tbody").addEventListener("click", function(e) {
+  if (e.target.classList.contains("btn-editar")) {
+    const id = Number(e.target.dataset.id);
+
+    const transaction = db.transaction("usuarios", "readonly");
+    const store = transaction.objectStore("usuarios");
+    const getRequest = store.get(id);
+
+    getRequest.onsuccess = () => {
+      const usuario = getRequest.result;
+      if (usuario) {
+        const nuevoNombre = prompt("Editar nombre:", usuario.nombre);
+        const nuevoCorreo = prompt("Editar correo:", usuario.correo);
+
+        // Aquí está la corrección:  Mantenemos todos los campos
+        if (nuevoNombre || nuevoCorreo) { //Solo si se modifica algo
+          const usuarioActualizado = {
+            id: usuario.id,
+            nombre: nuevoNombre || usuario.nombre, //Si no se modifica, mantiene el valor original
+            correo: nuevoCorreo || usuario.correo, //Si no se modifica, mantiene el valor original
+            cumpleaños: usuario.cumpleaños,  //Se mantienen los datos originales
+            genero: usuario.genero,       //Se mantienen los datos originales
+            horaRegistro: usuario.horaRegistro //Se mantienen los datos originales
+          };
+
+          const transactionEdit = db.transaction(["usuarios"], "readwrite");
+          const storeEdit = transactionEdit.objectStore("usuarios");
+          const putRequest = storeEdit.put(usuarioActualizado);
+
+          putRequest.onsuccess = () => {
+            alert("Usuario actualizado");
+            mostrarUsuarios();
+          };
+
+          putRequest.onerror = () => {
+            alert("Error al actualizar usuario (quizás correo duplicado)");
+          };
+        }
+      }
+    };
+  } else if (e.target.classList.contains("btn-eliminar")) {
+    const id = Number(e.target.dataset.id);
+    if(confirm("¿Seguro que quieres eliminar este usuario?")) {
+      const transaction = db.transaction("usuarios", "readwrite");
+      const store = transaction.objectStore("usuarios");
+      const deleteRequest = store.delete(id);
+
+      deleteRequest.onsuccess = () => {
+        alert("Usuario eliminado");
+        mostrarUsuarios(); // Actualizar la tabla después de eliminar
+      };
+
+      deleteRequest.onerror = () => {
+        alert("Error al eliminar usuario");
+      };
+    }
+  }
+});
+
+
+request.onsuccess = (event) => {
+  db = event.target.result;
+  mostrarUsuarios();
+  console.log("Base de datos abierta con éxito");
+};
+    </script>
+
+
+
+
 </html>
